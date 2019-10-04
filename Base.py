@@ -1,3 +1,9 @@
+'''
+Programa: a1_DireccionesPersonaje, mover personaje en todas las direcciones
+Autor: Andres Patiño
+'''
+
+
 import pygame
 import math
 import random
