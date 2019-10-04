@@ -13,6 +13,7 @@ VERDE = [0,255,0]
 ROJO = [255,0,0]
 AZUL =  [0,0,255]
 NEGRO = [0,0,0]
+Verde=[10,1,0]
 
 ANCHO = 600
 ALTO = 400
@@ -21,8 +22,8 @@ class Jugador(pygame.sprite.Sprite):
     def __init__(self,punto,color):
         #Constructor
         pygame.sprite.Sprite.__init__(self)
-        self.image=pygame.Surface([40,50])
-        self.image.fill(color)
+        self.image=pygame.Surface([40,50])400
+        self.image.fill(color)400
         self.rect=self.image.get_rect()
         self.rect.x=punto[0]
         self.rect.y=punto[1]
