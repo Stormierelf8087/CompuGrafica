@@ -34,6 +34,16 @@ class Jugador(pygame.sprite.Sprite):
         '''Actualizar jugador'''
         self.rect.x +=self.velx
 
+class Rival(pygame.sprite.Sprite):
+    def __init__(self,color):
+        #Constructor
+        pygame.sprite.Sprite.__init__(self)
+        self.image=pygame.Surface([40,50])
+        self.image.fill(color)
+        self.rect=self.image.get_rect()
+
+
+
 
 if __name__ == '__main__':
     pygame.init()
@@ -41,10 +51,18 @@ if __name__ == '__main__':
     pantalla = pygame.display.set_mode([ANCHO,ALTO])
     reloj = pygame.time.Clock()
     jugadores=pygame.sprite.Group()
+    rivales=pygame.sprite.Group()
 
     #Agregar jugador 1
     j=Jugador(VERDE)
     jugadores.add(j)
+
+    n=10
+    for i in range(n):
+        r=Rival(ROJO)
+        r.rect.x=random.randrange(600)
+        r.rect.y=random.randrange(200)
+        rivales.add(r)
 
     #ciclo para la ventana
     fin = False
@@ -73,10 +91,10 @@ if __name__ == '__main__':
 
         #Actualizar objetos
         jugadores.update()
-
+        rivales.update()
         pantalla.fill(NEGRO)
         #Dibujar objetos
         jugadores.draw(pantalla)
-
+        rivales.draw(pantalla)
         pygame.display.flip()
         reloj.tick(60)
