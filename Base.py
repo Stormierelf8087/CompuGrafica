@@ -1,3 +1,10 @@
+'''
+Programa: Juego demostracion
+version: b1_2DireccionesPersonaje,  juego de dos direcciones
+Autor: Andres Patiño
+fecha: Octubre 4 de 2019
+'''
+
 import pygame
 import math
 import random
@@ -12,21 +19,20 @@ ANCHO = 600
 ALTO = 400
 
 class Jugador(pygame.sprite.Sprite):
-    def __init__(self,punto,color):
+    def __init__(self,color):
         #Constructor
         pygame.sprite.Sprite.__init__(self)
         self.image=pygame.Surface([40,50])
         self.image.fill(color)
         self.rect=self.image.get_rect()
-        self.rect.x=punto[0]
-        self.rect.y=punto[1]
+        self.rect.x=100
+        self.rect.y=ALTO-self.rect.height
         self.velx=0
         self.vely=0
 
     def update(self):
         '''Actualizar jugador'''
         self.rect.x +=self.velx
-        self.rect.y +=self.vely
 
 
 if __name__ == '__main__':
@@ -36,9 +42,8 @@ if __name__ == '__main__':
     reloj = pygame.time.Clock()
     jugadores=pygame.sprite.Group()
 
-    puntoinicial=[100,50]
     #Agregar jugador 1
-    j=Jugador(puntoinicial,VERDE)
+    j=Jugador(VERDE)
     jugadores.add(j)
 
     #ciclo para la ventana
@@ -57,12 +62,7 @@ if __name__ == '__main__':
                 if event.key == pygame.K_RIGHT:
                     j.velx=5
                     j.vely=0
-                if event.key == pygame.K_UP:
-                    j.velx=0
-                    j.vely=-5
-                if event.key == pygame.K_DOWN:
-                    j.velx=0
-                    j.vely=5
+
             if event.type == pygame.KEYUP:
                 j.velx=0
                 j.vely=0
